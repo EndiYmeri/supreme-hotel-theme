@@ -19,10 +19,10 @@ get_header();
             <button class="button">Rooms & Suites</button>
         </div>
         <div class="grid gap-7 justify-end">
-            <img class="img" src="<?php bloginfo('template_url'); ?>/assets/images/hero-1.jpg" alt="">
-            <img class="img" src="<?php bloginfo('template_url'); ?>/assets/images/hero-2.jpg" alt="">
-            <img class="img" src="<?php bloginfo('template_url'); ?>/assets/images/hero-3.jpg" alt="">
-            <img class="img" src="<?php bloginfo('template_url'); ?>/assets/images/hero-4.jpg" alt="">
+            <img class="img" src="<?php bloginfo('template_url'); ?>/assets/images/room.jpg" alt="">
+            <img class="img" src="<?php bloginfo('template_url'); ?>/assets/images/outside.jpg" alt="">
+            <img class="img" src="<?php bloginfo('template_url'); ?>/assets/images/drone-view.jpg" alt="">
+            <img class="img" src="<?php bloginfo('template_url'); ?>/assets/images/shrimps.jpg" alt="">
         </div>
     </div>
 </section>
@@ -30,7 +30,7 @@ get_header();
     <main id="main">
             <div class="container grid grid-cols-2">
                 <div class="relative">
-                    <img class="img" src="<?php bloginfo('template_url'); ?>/assets/images/pool1.jpg" alt="">
+                    <img class="img" src="<?php bloginfo('template_url'); ?>/assets/images/chairs.jpg" alt="">
                     <img class="img absolute -bottom-11 left-40" src="<?php bloginfo('template_url'); ?>/assets/images/staff.jpg" alt="">
                 </div>
                 <div class="grid justify-items-end content-baseline">
