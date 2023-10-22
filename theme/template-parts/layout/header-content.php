@@ -16,13 +16,13 @@
 		<?php
 		if ( is_front_page() ) :
 			?>
-			<img class="w-[240px]" src="<?php bloginfo('template_url') ?>/assets/images/SVG/logo-white.svg" />
+			<img class="w-[240px]" src="<?php bloginfo('template_url') ?>/assets/SVG/logo-white.svg" />
 			<!-- <h1><?php bloginfo( 'name' ); ?></h1> -->
 			<?php
 		else :
 			?>
 			<a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home">
-				<img class="w-[240px]" src="<?php bloginfo('template_url') ?>/assets/images/SVG/logo-white.svg" />
+				<img class="w-[240px]" src="<?php bloginfo('template_url') ?>/assets/SVG/logo-white.svg" />
 			</a>
 			<?php
 		endif;

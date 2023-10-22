@@ -18,6 +18,9 @@ module.exports = {
 				centuryRoman: ['Century751 BT Roman'],
 				montserrat: ['Montserrat'],
 			},
+			colors: {
+				blue: '#3E9CBE',
+			},
 		},
 		container: {
 			center: true,

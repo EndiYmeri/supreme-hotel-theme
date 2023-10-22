@@ -47,5 +47,8 @@
 		"zip": "node node_scripts/zip.js supreme-hotel-theme",
 		"bundle": "run-s production zip"
 	},
-	"prettier": "@wordpress/prettier-config"
+	"prettier": "@wordpress/prettier-config",
+	"dependencies": {
+		"swiper": "^10.3.1"
+	}
 }

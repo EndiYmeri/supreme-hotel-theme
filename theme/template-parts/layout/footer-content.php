@@ -9,44 +9,77 @@
 
 ?>
 
-<footer id="colophon">
-
-	<?php if ( is_active_sidebar( 'sidebar-1' ) ) : ?>
-		<aside role="complementary" aria-label="<?php esc_attr_e( 'Footer', 'supreme-hotel-theme' ); ?>">
-			<?php dynamic_sidebar( 'sidebar-1' ); ?>
-		</aside>
-	<?php endif; ?>
-
-	<?php if ( has_nav_menu( 'menu-2' ) ) : ?>
-		<nav aria-label="<?php esc_attr_e( 'Footer Menu', 'supreme-hotel-theme' ); ?>">
-			<?php
+<footer id="main-footer" class="bg-blue">
+    <div class="container border-b-2 border-white">
+        <div id="footer-top" class=" pt-32">
+            <h1 class="text-[73px] text-white text-center leading-none mb-1">REGISTER NOW!</h1>
+            <h1 class="text-[39px] text-white text-center leading-none mb-1">AND GET THE LATEST OFFERS</h1>
+            <div class="bg-blue-100 p-4">
+                <div class="max-w-md mx-auto text-center">
+                    <form class="mt-4 flex items-center">
+                        <input type="email" placeholder="your email..." class="bg-transparent border py-2 px-6">
+                        <button type="submit"
+                            class="bg-white border text-blue py-2 px-4 hover:bg-white transition duration-200">Subscribe</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <div id="footer-main" class="grid grid-cols-3 items-center">
+            <div class="menu-left">
+                <?php if ( has_nav_menu( 'footer-menu-left' ) ) : ?>
+                <nav aria-label="<?php esc_attr_e( 'Footer Menu', 'supreme-hotel-theme' ); ?>">
+                    <?php
 			wp_nav_menu(
 				array(
-					'theme_location' => 'menu-2',
-					'menu_class'     => 'footer-menu',
+					'theme_location' => 'footer-menu-left',
+					'menu_class'     => 'footer-menu pl-[95px]',
 					'depth'          => 1,
 				)
 			);
 			?>
-		</nav>
-	<?php endif; ?>
+                </nav>
+                <?php endif; ?>
+            </div>
+            <div class="menu-logo">
 
-	<div>
-		<?php
-		$supreme_hotel_theme_blog_info = get_bloginfo( 'name' );
-		if ( ! empty( $supreme_hotel_theme_blog_info ) ) :
+                <?php
+		if ( is_front_page() ) :
 			?>
-			<a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home"><?php bloginfo( 'name' ); ?></a>,
-			<?php
+                <img class="w-[470px] mx-auto" src="<?php bloginfo('template_url') ?>/assets/SVG/SLogo.svg" />
+                <!-- <h1><?php bloginfo( 'name' ); ?></h1> -->
+                <?php
+		else :
+			?>
+                <a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home">
+                    <img class="w-[470px] mx-auto" src="<?php bloginfo('template_url') ?>/assets/SVG/SLogo.svg" />
+                </a>
+                <?php
 		endif;
-
-		/* translators: 1: WordPress link, 2: WordPress. */
-		printf(
-			'<a href="%1$s">proudly powered by %2$s</a>.',
-			esc_url( __( 'https://wordpress.org/', 'supreme-hotel-theme' ) ),
-			'WordPress'
-		);
 		?>
-	</div>
+            </div>
+            <div class="menu-right justify-self-end">
+                <?php if ( has_nav_menu( 'footer-menu-right' ) ) : ?>
+                <nav aria-label="<?php esc_attr_e( 'Footer Menu', 'supreme-hotel-theme' ); ?>">
+                    <?php
+			wp_nav_menu(
+				array(
+					'theme_location' => 'footer-menu-right',
+					'menu_class'     => 'footer-menu text-right pr-[95px]',
+					'depth'          => 1,
+				)
+			);
+			?>
+                </nav>
+                <?php endif; ?>
+            </div>
+
+        </div>
+        <div id="footer-bottom" class="text-center text-white font-bold text-xl py-[75px]">
+            info@supreme.com.al / 00 355 67 40 22 112
+        </div>
+    </div>
+    <div id=" copyright" class="text-center text-white font-light text-xl py-[30px]">
+        © Copyright Supreme Hotel & Spa
+    </div>
 
 </footer><!-- #colophon -->

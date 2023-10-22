@@ -81,7 +81,8 @@ if ( ! function_exists( 'supreme_hotel_theme_setup' ) ) :
 		register_nav_menus(
 			array(
 				'menu-1' => __( 'Primary', 'supreme-hotel-theme' ),
-				'menu-2' => __( 'Footer Menu', 'supreme-hotel-theme' ),
+				'footer-menu-left' => __( 'Footer Menu Left', 'supreme-hotel-theme' ),
+				'footer-menu-right' => __( 'Footer Menu Right', 'supreme-hotel-theme' ),
 			)
 		);
 
