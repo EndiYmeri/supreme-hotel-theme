@@ -12,6 +12,10 @@
  * editor.
 */
 
+.container {
+	@apply px-4 lg:px-0;
+}
+
 #hero ::-webkit-scrollbar {
 	/* Customize the scrollbar width */
 	width: 5px;

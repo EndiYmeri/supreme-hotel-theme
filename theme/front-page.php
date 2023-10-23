@@ -11,16 +11,16 @@ get_header();
 ?>
 <section id="hero" class="h-screen bg-cover"
     style="background-image: url('<?php bloginfo('template_url'); ?>/assets/images/hero-image.jpg');">
-    <div class="container grid grid-cols-2 items-center h-full justify-between">
+    <div class="container grid  md:grid-cols-2 items-center h-full justify-between">
         <div class="grid gap-2 justify-items-start">
             <?php while (have_rows("hero_section")):
                     the_row(); ?>
-            <h1 class="text-white text-[164px]">
+            <h1 class="text-white text-[70px] sm:text-[90px]  md:text-[110px]  lg:text-[164px]">
                 <?php echo the_sub_field("title"); ?>
             </h1>
             <?php
                 endwhile; ?>
-            <p class="text-xl text-white font-semibold">
+            <p class=" text-base md:text-xl text-white font-semibold">
                 "Supreme" is a luxury hotel in Durres, Albania, offering an exquisite coastal retreat. With stunning sea
                 views, elegant suites, and top-notch amenities including a spa and infinity pool, it's a haven of
                 opulence. Experience impeccable service, gourmet dining, and a touch of Albanian charm at this lavish
@@ -28,7 +28,7 @@ get_header();
             </p>
             <button class="button">Rooms & Suites</button>
         </div>
-        <div class="grid gap-7 justify-end h-full overflow-y-scroll">
+        <div class="grid gap-7 justify-end h-full md:overflow-y-scroll">
             <img class="img" src="<?php bloginfo('template_url'); ?>/assets/images/room.jpg" alt="">
             <img class="img" src="<?php bloginfo('template_url'); ?>/assets/images/outside.jpg" alt="">
             <img class="img" src="<?php bloginfo('template_url'); ?>/assets/images/drone-view.jpg" alt="">
@@ -113,41 +113,6 @@ get_header();
         <div class="container grid justify-items-center">
             <p class="text-[35px] font-medium text-xl mb-8">RAISING COMFORT TO THE HIGHEST LEVEL</p>
             <h1 class="text-7xl mb-16">Rooms & Suites</h1>
-
-            <div class="swiper swiper-rooms h-[500px] w-full">
-                <!-- Additional required wrapper -->
-                <div class="swiper-wrapper">
-                    <!-- Slides -->
-                    <div class="swiper-slide">
-                        <img src="<?php bloginfo('template_url'); ?>/assets/images/room1.jpg" alt="">
-                    </div>
-                    <div class="swiper-slide">
-                        <img src="<?php bloginfo('template_url'); ?>/assets/images/room2.jpg" alt="">
-                    </div>
-                    <div class="swiper-slide">
-                        <img src="<?php bloginfo('template_url'); ?>/assets/images/room3.jpg" alt="">
-                    </div>
-                    <div class="swiper-slide">
-                        <img src="<?php bloginfo('template_url'); ?>/assets/images/room1.jpg" alt="">
-                    </div>
-                    <div class="swiper-slide">
-                        <img src="<?php bloginfo('template_url'); ?>/assets/images/room2.jpg" alt="">
-                    </div>
-                    <div class="swiper-slide">
-                        <img src="<?php bloginfo('template_url'); ?>/assets/images/room3.jpg" alt="">
-                    </div>
-                    ...
-                </div>
-                <!-- If we need pagination -->
-                <div class="swiper-pagination"></div>
-
-                <!-- If we need navigation buttons -->
-                <div class="swiper-button-prev"></div>
-                <div class="swiper-button-next"></div>
-
-                <!-- If we need scrollbar -->
-                <div class="swiper-scrollbar"></div>
-            </div>
             <div class="grid grid-cols-3  justify-items-center gap-11">
                 <img src="<?php bloginfo('template_url'); ?>/assets/images/room1.jpg" alt="">
                 <img src="<?php bloginfo('template_url'); ?>/assets/images/room2.jpg" alt="">
@@ -162,66 +127,25 @@ get_header();
 </section><!-- #primary -->
 
 <section id="restaurant-section" class="h-screen max-h-[980px] relative">
-    <!-- Slider main container -->
-    <div class="swiper swiper-restaurant w-full h-full">
-        <div class="swiper-wrapper">
-            <!-- Slides -->
-            <div class="swiper-slide">
-                <div class="absolute top-0 left-0 w-full h-full z-0 bg-no-repeat bg-cover bg-center"
-                    style="background-image: url('<?php bloginfo('template_url'); ?>/assets/images/IMG4.jpg');"></div>
-                <div
-                    class="absolute top-0 left-0 w-full h-full z-[1] bg-gradient-to-r from-black to-transparent opacity-90">
-                </div>
-                <div class="container h-full grid grid-cols-2 items-center relative z-[2] ">
-                    <div class="">
-                        <h1 class="text-[73px] text-white leading-none mb-10">Panorama Restaurant</h1>
-                        <p class="text-[20px] font-extralight italic text-white leading-[2.2] mb-7">"Supreme" Hotel in
-                            Durres,
-                            Albania, is a realm of absolute luxury.From the awe-inspiring sea-view rooms to the
-                            exquisite dining and
-                            top-notch amenities like the infinity pool and spa,
-                            every detail exudes opulence. The staff's impeccable service creates an unforgettable
-                            experience.
-                            If you crave the finest,"Supreme" is your ultimate escape</p>
-                        <button class="button bg-[#C3B085] text-white mx-auto">VIEW MENU</button>
-                    </div>
-                </div>
-            </div>
-            <div class="swiper-slide">
-                <div class="absolute top-0 left-0 w-full h-full z-0 bg-no-repeat bg-cover bg-center"
-                    style="background-image: url('<?php bloginfo('template_url'); ?>/assets/images/IMG4.jpg');"></div>
-                <div
-                    class="absolute top-0 left-0 w-full h-full z-[1] bg-gradient-to-r from-black to-transparent opacity-90">
-                </div>
-                <div class="container h-full grid grid-cols-2 items-center relative z-[2] ">
-                    <div class="">
-                        <h1 class="text-[73px] text-white leading-none mb-10">Supreme Restaurant</h1>
-                        <p class="text-[20px] font-extralight italic text-white leading-[2.2] mb-7">"Supreme" Hotel in
-                            Durres,
-                            Albania, is a realm of absolute luxury.From the awe-inspiring sea-view rooms to the
-                            exquisite dining and
-                            top-notch amenities like the infinity pool and spa,
-                            every detail exudes opulence. The staff's impeccable service creates an unforgettable
-                            experience.
-                            If you crave the finest,"Supreme" is your ultimate escape</p>
-                        <button class="button bg-[#C3B085] text-white mx-auto">VIEW MENU</button>
-                    </div>
-                </div>
-            </div>
-        </div>
-        ...
-        <!-- If we need pagination -->
-        <div class="swiper-pagination"></div>
 
-        <!-- If we need navigation buttons -->
-        <!-- <div class="swiper-button-prev"></div>
-        <div class="swiper-button-next"></div> -->
-
-        <!-- If we need scrollbar -->
-        <div class="swiper-scrollbar"></div>
+    <div class="absolute top-0 left-0 w-full h-full z-0 bg-no-repeat bg-cover bg-center"
+        style="background-image: url('<?php bloginfo('template_url'); ?>/assets/images/IMG4.jpg');"></div>
+    <div class="absolute top-0 left-0 w-full h-full z-[1] bg-gradient-to-r from-black to-transparent opacity-90">
     </div>
-
-
+    <div class="container h-full grid grid-cols-2 items-center relative z-[2] ">
+        <div class="">
+            <h1 class="text-[73px] text-white leading-none mb-10">Panorama Restaurant</h1>
+            <p class="text-[20px] font-extralight italic text-white leading-[2.2] mb-7">"Supreme" Hotel in
+                Durres,
+                Albania, is a realm of absolute luxury.From the awe-inspiring sea-view rooms to the
+                exquisite dining and
+                top-notch amenities like the infinity pool and spa,
+                every detail exudes opulence. The staff's impeccable service creates an unforgettable
+                experience.
+                If you crave the finest,"Supreme" is your ultimate escape</p>
+            <button class="button bg-[#C3B085] text-white mx-auto">VIEW MENU</button>
+        </div>
+    </div>
 </section><!-- #primary-->
 
 
