@@ -37,7 +37,7 @@ body {
 }
 
 h1 {
-	@apply font-centuryRoman;
+	@apply font-centuryRoman font-semibold;
 }
 
 a {
@@ -48,25 +48,43 @@ p {
 }
 
 img.icon {
-	@apply w-[45px] h-[45px];
+	@apply w-[35px] h-[35px] md:w-[45px] md:h-[45px];
 }
 
 img.img {
-	@apply border-4 border-white;
+	/* @apply border-4 border-white; */
 }
 
-section:not(.hero) {
+section:not(#hero) {
 	@apply py-20;
 }
 
 button.button {
-	@apply rounded-full border-white border-2 py-6 px-16 text-xl text-white font-semibold;
+	@apply rounded-none border-white border-2 max-lg:w-full max-lg:mt-4  py-4 px-10 lg:py-6 lg:px-16 text-xl text-white font-semibold;
+}
+button.button.gold {
+	@apply rounded-none bg-[#E1C678] border-[#E1C678] border-2 max-lg:w-full max-lg:mt-4  py-4 px-10 lg:py-6 lg:px-16 text-xl text-white font-semibold;
 }
 
 #site-navigation .menu li a {
 	@apply text-[20px] text-white px-[5px];
 }
 
+#mobile-nav .menu li a {
+	@apply text-[20px] text-white px-[5px];
+}
+
 .footer-menu li a {
-	@apply text-white text-[30px] font-normal;
+	@apply text-white text-xl md:text-[24px]  font-normal;
+}
+
+.book-container .book-row {
+	@apply !mx-0;
+}
+#bookWidget-75797-211214-0-1698929570 .book-widget-size-all {
+	@apply !shadow-none;
+}
+
+.splide__arrow--prev {
+	@apply !left-0;
 }

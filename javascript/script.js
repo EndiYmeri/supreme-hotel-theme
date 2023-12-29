@@ -8,18 +8,34 @@
  * For esbuild documentation, please see:
  * https://esbuild.github.io/
  */
+
+// import Swiper from 'swiper';
+
+import Alpine from 'alpinejs';
+
+window.Alpine = Alpine;
+
+Alpine.start();
+
 let header = document.getElementById('masthead');
-console.log({ header });
 let oldColor = header.style.backgroundColor;
-console.log({ oldColor });
 
 window.addEventListener('scroll', () => {
 	let yPosition = window.scrollY;
 	if (yPosition > 100) {
 		header.style.backgroundColor = '#480634';
-		header.classList.add('py-2');
+		header.classList.add('py-4');
 	} else {
-		header.classList.remove('py-2');
+		header.classList.remove('py-4');
 		header.style.backgroundColor = oldColor;
 	}
 });
+
+
+
+
+
+// window.onload = () => {
+// 	// eslint-disable-next-line no-unused-vars
+// 	var roomsSwiper = new Swiper('#rooms-slider', {});
+// };
