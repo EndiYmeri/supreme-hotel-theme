@@ -81,7 +81,7 @@ button.button.gold {
 .book-container .book-row {
 	@apply !mx-0;
 }
-#bookWidget-75797-211214-0-1698929570 .book-widget-size-all {
+.book-widget-size-all {
 	@apply !shadow-none;
 }
 

@@ -9,7 +9,7 @@
 
 ?>
 
-<footer id="main-footer" class="bg-[#480634]">
+<footer id="main-footer" class="bg-[#3E9CBE]">
     <div class="container border-b-2 border-white">
         <div id="footer-top" class=" pt-32">
             <h1 class="text-[36px] md:text-[56px]  text-white text-center leading-none mb-1">REGISTER NOW!</h1>
@@ -20,7 +20,7 @@
                     <form class="mt-4 flex w-full items-center">
                         <input type="email" placeholder="Your email..." class="w-full  bg-transparent border py-2 px-6">
                         <button type="submit"
-                            class="bg-white border text-[#480634] py-2 px-4 hover:bg-white transition duration-200">Subscribe</button>
+                            class="bg-white border text-[#3E9CBE] py-2 px-4 hover:bg-white transition duration-200">Subscribe</button>
                     </form>
                 </div>
             </div>
@@ -78,7 +78,7 @@
 
         </div>
         <div id="footer-bottom" class="text-center text-white font-bold text-sm md:text-base py-4 md:py-8">
-            info@supreme.com.al / 00 355 67 40 22 112
+            info@supreme.com.al / 00 355 67 40 22 111
         </div>
     </div>
     <div id=" copyright" class="text-center text-white font-light text-sm md:text-base py-2 md:py-4">

@@ -43,7 +43,9 @@ get_header();
                             </div>
                             <img src="<?php bloginfo('template_url'); ?>/assets/images/room1.jpg" alt="">
                         </div>
-                        <a class="py-1 -mt-[2px] text-lg hover:underline" href="">Standard Double Room</a>
+                        <a class="py-1 -mt-[2px] text-lg hover:underline"
+                            href="<?php echo esc_url(home_url('/')); ?>standard-double-room/">Standard Double
+                            Room</a>
                     </li>
                     <li x-data="{open: false}" @mouseover="open = true" @mouseout="open = false" class="splide__slide">
                         <div class="relative">
@@ -53,7 +55,9 @@ get_header();
                             </div>
                             <img src="<?php bloginfo('template_url'); ?>/assets/images/room2.jpg" alt="">
                         </div>
-                        <a class="py-1 -mt-[2px] text-lg hover:underline" href="">Superior Double Room</a>
+                        <a class="py-1 -mt-[2px] text-lg hover:underline"
+                            href="<?php echo esc_url(home_url('/')); ?>superior-double-room/">Superior Double
+                            Room</a>
                     </li>
                     <li x-data="{open: false}" @mouseover="open = true" @mouseout="open = false" class="splide__slide">
                         <div class="relative">
@@ -63,7 +67,9 @@ get_header();
                             </div>
                             <img src="<?php bloginfo('template_url'); ?>/assets/images/room3.jpg" alt="">
                         </div>
-                        <a class="py-1 -mt-[2px] text-lg hover:underline" href="">Standard Triple Room</a>
+                        <a class="py-1 -mt-[2px] text-lg hover:underline"
+                            href="<?php echo esc_url(home_url('/')); ?>standard-triple-room/">Standard Triple
+                            Room</a>
                     </li>
                     <li x-data="{open: false}" @mouseover="open = true" @mouseout="open = false" class="splide__slide">
                         <div class="relative">
@@ -73,7 +79,9 @@ get_header();
                             </div>
                             <img src="<?php bloginfo('template_url'); ?>/assets/images/room1.jpg" alt="">
                         </div>
-                        <a class="py-1 -mt-[2px] text-lg hover:underline" href="">Superior Triple Room</a>
+                        <a class="py-1 -mt-[2px] text-lg hover:underline"
+                            href="<?php echo esc_url(home_url('/')); ?>superior-triple-room/">Superior Triple
+                            Room</a>
                     </li>
                     <li x-data="{open: false}" @mouseover="open = true" @mouseout="open = false" class="splide__slide">
                         <div class="relative">
@@ -83,7 +91,8 @@ get_header();
                             </div>
                             <img src="<?php bloginfo('template_url'); ?>/assets/images/room2.jpg" alt="">
                         </div>
-                        <a class="py-1 -mt-[2px] text-lg hover:underline" href="">Family Room</a>
+                        <a class="py-1 -mt-[2px] text-lg hover:underline"
+                            href="<?php echo esc_url(home_url('/')); ?>family-room/">Family Room</a>
                     </li>
                     <li x-data="{open: false}" @mouseover="open = true" @mouseout="open = false" class="splide__slide">
                         <div class="relative">
@@ -93,7 +102,8 @@ get_header();
                             </div>
                             <img src="<?php bloginfo('template_url'); ?>/assets/images/room3.jpg" alt="">
                         </div>
-                        <a class="py-1 -mt-[2px] text-lg hover:underline" href="">Deluxe Sea View Suite</a>
+                        <a class="py-1 -mt-[2px] text-lg hover:underline"
+                            href="<?php echo esc_url(home_url('/')); ?>deluxe-sea-view/">Deluxe Sea View Suite</a>
                     </li>
                 </ul>
             </div>

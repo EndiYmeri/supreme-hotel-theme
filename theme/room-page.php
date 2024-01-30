@@ -12,15 +12,17 @@ if (have_rows("hero_section")):
         $hero_description = get_sub_field("hero_description");
         $hero_image = get_sub_field("hero_image");
         ?>
-        <section id="hero-room" class="h-screen bg-cover relative" style="background-image: url('<?php echo $hero_image; ?>');">
+        <section id="hero-room" class="h-[400px] md:h-[600px] bg-cover relative"
+            style="background-image: url('<?php echo $hero_image; ?>');">
             <div class="absolute top-0 left-0 w-full h-full z-[1] bg-gradient-to-r from-black to-transparent opacity-90">
                 <div class="container h-full grid place-content-center z-10">
                     <h1 class="text-white text-5xl md:text-6xl lg:text-8xl text-center mb-10">
                         <?php the_title(""); ?>
                     </h1>
+                    <!--                     
                     <p class="text-white font-light">
                         <?php echo $hero_description ?>
-                    </p>
+                    </p> -->
                 </div>
         </section>
         <?php
@@ -28,12 +30,22 @@ if (have_rows("hero_section")):
 else:
     // Do something...
 endif; ?>
-
+<section class="!py-0">
+    <?php the_field('booking_widget'); ?>
+</section>
+<section>
+    <?php
+    $slider = get_field("slider_shortcode");
+    if ($slider) {
+        echo do_shortcode($slider);
+    }
+    ?>
+</section>
 <main class="container py-4 ">
     <div class="grid md:grid-cols-[70%_30%] ">
         <div class="relative ">
             <div class="sticky top-[100px]">
-                <section id="textinfo-section" class="py-10 bg-white pr-5 border-b-[2px] border-[#E1C678]">
+                <section id="textinfo-section" class="!py-8 bg-white pr-5 border-b-[2px] border-[#E1C678]">
                     <div class="container items-center h-full justify-between">
                         <div class="justify-items-center">
                             <?php // Check rows exists.
@@ -46,7 +58,7 @@ endif; ?>
                                     $section_title = get_sub_field("room_description_title");
                                     $section_text = get_sub_field("room_description_content");
                                     ?>
-                                    <h1 class="text-black text-3xl text-left mb-16 uppercase">
+                                    <h1 class="text-black text-3xl text-left mb-6 uppercase">
                                         <?php echo $section_title; ?>
                                     </h1>
                                     <p class="text-black text-xl text-left mb-2">
@@ -59,7 +71,7 @@ endif; ?>
                             endif; ?>
                         </div>
                 </section>
-                <section id="textinfo-section" class="py-10 bg-white pr-5 border-b-[2px] border-[#E1C678]">
+                <section id="textinfo-section" class="!py-8 bg-white pr-5 border-b-[2px] border-[#E1C678]">
                     <div class="container items-center h-full justify-between">
                         <div class="justify-items-center">
                             <?php // Check rows exists.
@@ -72,7 +84,7 @@ endif; ?>
                                     $commodity_list = get_field("commodities")["commodities_list"];
 
                                     ?>
-                                    <h1 class="text-black text-3xl text-left mb-16 uppercase">
+                                    <h1 class="text-black text-3xl text-left mb-6 uppercase">
                                         <?php echo $section_title; ?>
                                     </h1>
                                     <ul class="grid grid-cols-2">
@@ -96,7 +108,7 @@ endif; ?>
                         </div>
                     </div>
                 </section>
-                <section id="textinfo-section" class="py-10 bg-white pr-5 border-b-[2px] border-[#E1C678]">
+                <section id="textinfo-section" class="!py-8 bg-white pr-5 border-b-[2px] border-[#E1C678]">
                     <div class="container items-center h-full justify-between">
                         <div class="justify-items-center">
 
@@ -132,10 +144,10 @@ endif; ?>
                         </div>
                     </div>
                 </section>
-                <section id="textinfo-section" class="py-10 bg-white pr-5 border-b-[2px] border-[#E1C678]">
+                <section id="textinfo-section" class="!py-8 bg-white pr-5 border-b-[2px] border-[#E1C678]">
                     <div class="container items-center h-full justify-between">
                         <div class="justify-items-center">
-                            <h1 class="text-black text-3xl text-left mb-16 uppercase">
+                            <h1 class="text-black text-3xl text-left mb-6 uppercase">
                                 Reviews
                             </h1>
                         </div>
@@ -143,15 +155,12 @@ endif; ?>
                 </section>
             </div>
         </div>
-        <div class="grid gap-4 items-center max-w-[600px] ">
+        <div class="flex flex-col gap-4 max-w-[600px] ">
             <?php
             $images = get_field("images");
             if ($images): ?>
                 <?php foreach ($images as $image): ?>
-                    <div>
-                        <img class="img" src="<?php echo esc_url($image); ?>" alt="<?php echo esc_attr($image); ?>">
-                    </div>
-
+                    <img class="img" src="<?php echo esc_url($image); ?>" alt="<?php echo esc_attr($image); ?>">
                 <?php endforeach; ?>
             <?php endif;
             ?>
@@ -159,84 +168,13 @@ endif; ?>
         </div>
     </div>
 </main>
-<section id="rooms-section" class="bg-white py-10">
-    <div class="container">
-        <h1 class="text-black text-3xl my-7">
-            <?php the_title(""); ?>
-        </h1>
-        <div class="splide rooms-splide" role="group" aria-label="Rooms Slider">
-            <div class="splide__track">
-                <ul class="splide__list">
-                    <li x-data="{open: false}" @mouseover="open = true" @mouseout="open = false" class="splide__slide">
-                        <div class="relative">
-                            <div x-show="open" x-transition class="py-2 px-4 bg-white absolute w-full  left-0 bottom-0">
-                                <p class="text-sm md:text-base">Max 2 guests</p>
-                            </div>
-                            <img src="<?php bloginfo('template_url'); ?>/assets/images/room1.jpg" alt="">
-                        </div>
-                        <a class="py-1 -mt-[2px] text-lg hover:underline"
-                            href="<?php echo esc_url(home_url('/')); ?>standard-double-room/">Standard Double
-                            Room</a>
-                    </li>
-                    <li x-data="{open: false}" @mouseover="open = true" @mouseout="open = false" class="splide__slide">
-                        <div class="relative">
-                            <div x-show="open" x-transition class="py-2 px-4 bg-white absolute w-full  left-0 bottom-0">
-                                <p class="text-sm md:text-base">Max 2 guests</p>
-                            </div>
-                            <img src="<?php bloginfo('template_url'); ?>/assets/images/room2.jpg" alt="">
-                        </div>
-                        <a class="py-1 -mt-[2px] text-lg hover:underline"
-                            href="<?php echo esc_url(home_url('/')); ?>standard-double-room/">Superior Double
-                            Room</a>
-                    </li>
-                    <li x-data="{open: false}" @mouseover="open = true" @mouseout="open = false" class="splide__slide">
-                        <div class="relative">
-                            <div x-show="open" x-transition class="py-2 px-4 bg-white absolute w-full  left-0 bottom-0">
-                                <p class="text-sm md:text-base">Max 2 guests</p>
-                            </div>
-                            <img src="<?php bloginfo('template_url'); ?>/assets/images/room3.jpg" alt="">
-                        </div>
-                        <a class="py-1 -mt-[2px] text-lg hover:underline"
-                            href="<?php echo esc_url(home_url('/')); ?>standard-double-room/">Standard Triple
-                            Room</a>
-                    </li>
-                    <li x-data="{open: false}" @mouseover="open = true" @mouseout="open = false" class="splide__slide">
-                        <div class="relative">
-                            <div x-show="open" @mouseout="open = false" x-transition
-                                class="py-2 px-4 bg-white absolute w-full  left-0 bottom-0">
-                                <p class="text-sm md:text-base">Max 2 guests</p>
-                            </div>
-                            <img src="<?php bloginfo('template_url'); ?>/assets/images/room1.jpg" alt="">
-                        </div>
-                        <a class="py-1 -mt-[2px] text-lg hover:underline"
-                            href="<?php echo esc_url(home_url('/')); ?>standard-double-room/">Superior Triple
-                            Room</a>
-                    </li>
-                    <li x-data="{open: false}" @mouseover="open = true" @mouseout="open = false" class="splide__slide">
-                        <div class="relative">
-                            <div x-show="open" x-transition class="py-2 px-4 bg-white absolute w-full  left-0 bottom-0">
-                                <p class="text-sm md:text-base">Max 2 guests</p>
-                            </div>
-                            <img src="<?php bloginfo('template_url'); ?>/assets/images/room2.jpg" alt="">
-                        </div>
-                        <a class="py-1 -mt-[2px] text-lg hover:underline"
-                            href="<?php echo esc_url(home_url('/')); ?>standard-double-room/">Family Room</a>
-                    </li>
-                    <li x-data="{open: false}" @mouseover="open = true" @mouseout="open = false" class="splide__slide">
-                        <div class="relative">
-                            <div x-show="open" x-transition class="py-2 px-4 bg-white absolute w-full  left-0 bottom-0">
-                                <p class="text-sm md:text-base">Max 2 guests</p>
-                            </div>
-                            <img src="<?php bloginfo('template_url'); ?>/assets/images/room3.jpg" alt="">
-                        </div>
-                        <a class="py-1 -mt-[2px] text-lg hover:underline"
-                            href="<?php echo esc_url(home_url('/')); ?>/standard-double-room/">Deluxe Sea View Suite</a>
-                    </li>
-                </ul>
-            </div>
-        </div>
-    </div>
-</section>
+
+<?php
+
+if (get_field("has_slider")) {
+    get_template_part('template-parts/layout/section', 'rooms-slider');
+}
+?>
 
 <script>
     new Splide('.rooms-splide', {

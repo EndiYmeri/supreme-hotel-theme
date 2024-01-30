@@ -20,6 +20,7 @@ module.exports = {
 			},
 			colors: {
 				blue: '#3E9CBE',
+				violet: '#480634',
 			},
 		},
 		container: {

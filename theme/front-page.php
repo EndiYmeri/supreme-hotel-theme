@@ -8,30 +8,51 @@
  */
 
 get_header();
-?>
-<section id="hero" class="h-screen bg-cover pt-28"
-    style="background-image: url('<?php bloginfo('template_url'); ?>/assets/images/hero-image.jpg');">
-    <div class="container grid  lg:grid-cols-2  items-center h-full justify-between">
-        <div class="grid gap-2 justify-items-start ">
-            <h1 class="text-white text-[60px] sm:text-[80px]  md:text-[110px]  lg:text-[164px]">
-                Hello
-            </h1>
-            <p class="text-sm font-normal leading-tight md:text-xl text-white md:font-semibold">
-                "Supreme" is a luxury hotel in Durres, Albania, offering an exquisite coastal retreat. With stunning sea
-                views, elegant suites, and top-notch amenities including a spa and infinity pool, it's a haven of
-                opulence. Experience impeccable service, gourmet dining, and a touch of Albanian charm at this lavish
-                getaway.
-            </p>
-            <button class="button max-lg:w-full">Rooms & Suites</button>
-        </div>
-        <!-- <div class="grid hidden  grid-cols-2 gap-7 lg:grid-cols-1 w-full justify-items-center lg:justify-items-end lg:overflow-y-scroll">
-            <img class="img" src="<?php bloginfo('template_url'); ?>/assets/images/room.jpg" alt="">
-            <img class="img" src="<?php bloginfo('template_url'); ?>/assets/images/outside.jpg" alt="">
-            <img class="img" src="<?php bloginfo('template_url'); ?>/assets/images/drone-view.jpg" alt="">
-            <img class="img lg:hidden" src="<?php bloginfo('template_url'); ?>/assets/images/shrimps.jpg" alt="">
-        </div> -->
-    </div>
-</section>
+
+// Check rows exists.
+if (have_rows("hero_section")):
+    // Loop through rows.
+    while (have_rows("hero_section")):
+        the_row();
+        // Load sub field value.
+        $hero_logo = get_sub_field('hero_logo');
+        $hero_background = get_sub_field("hero_background");
+        $video_image = get_sub_field('video_image');
+        $hero_videos = get_sub_field('hero_videos');
+
+        if ($video_image === "image") {
+            ?>
+            <section id="hero" class="h-screen bg-cover" style="background-image: url('<?php echo $hero_background; ?>');">
+                <div class="grid h-screen place-content-center">
+                    <img class="opacity-70" width="150px" src="<?php echo $hero_logo; ?>" alt="">
+                </div>
+            </section>
+            <?php
+        }
+        if ($video_image === "video") {
+            ?>
+            <section id="hero" class="h-screen relative">
+                <video class="md:hidden absolute left-0 top-0 w-full h-screen"
+                    poster="<?php echo $hero_videos["placeholder_image_mobile"] ?>" muted preload="auto" autoplay Loop>
+                    <source src="<?php echo $hero_videos["mobile_video"] ?>" type="video/webm" />
+                    <source src="<?php echo $hero_videos["mobile_video"] ?>" type="video/mp4" />
+                </video>
+                <video class="max-md:hidden absolute left-0 top-0 w-full h-screen"
+                    poster="<?php echo $hero_videos["placeholder_image_desktop"] ?>" muted preload="auto" autoplay Loop>
+                    <source src="<?php echo $hero_videos["desktop_video"] ?>" type="video/webm" />
+                    <source src="<?php echo $hero_videos["desktop_video"] ?>" type="video/mp4" />
+                </video>
+                <div class="grid place-content-center relative h-screen">
+                    <img width="150px" class="opacity-70" src="<?php echo $hero_logo; ?>" alt="">
+                </div>
+            </section>
+            <?php
+        }
+    endwhile;
+else:
+    // Do something...
+endif; ?>
+
 <section class="!py-0">
     <!-- Place this div on your page where you want the widget to show -->
     <div id='bookWidget-75797-211214-0-1698929570'> </div>
@@ -50,209 +71,216 @@ get_header();
         });
     });
 </script>
-
-<section id="welcome-section">
-    <main id="main">
-        <div class="container grid  lg:gap-3 lg:grid-cols-2">
-            <div class="relative max-lg:mt-4 max-lg:order-2">
-                <img class="img max-lg:mx-auto" src="<?php bloginfo('template_url'); ?>/assets/images/chairs.jpg"
-                    alt="">
-                <img class="img max-lg:hidden absolute -bottom-11 left-40"
-                    src="<?php bloginfo('template_url'); ?>/assets/images/staff.jpg" alt="">
+<?php
+// Check rows exists.
+if (have_rows("welcome_section")):
+    // Loop through rows.
+    while (have_rows("welcome_section")):
+        the_row();
+        // Load sub field value.
+        $title = get_sub_field("title");
+        $description = get_sub_field("description");
+        $image = get_sub_field("image");
+        $button = get_sub_field("hero_button");
+        ?>
+        <section id="welcome-section">
+            <main id="main">
+                <div class="container grid  lg:gap-14 lg:grid-cols-2 items-center">
+                    <div class="relative max-lg:mt-4 max-lg:order-2">
+                        <img class="img max-lg:mx-auto" src="<?php echo $image; ?>" alt="">
+                    </div>
+                    <div class="grid gap-4 lg:justify-items-start content-baseline max-lg:order-1">
+                        <h1 class="text-5xl md:text-6xl max-lg:text-center xl:text-7xl">
+                            <?php echo $title; ?>
+                        </h1>
+                        <p class=" text-[23px] md:text-[30px] xl:text-[35px]  ">
+                            <?php echo $description; ?>
+                        </p>
+                        <button class="button  gold text-white ">
+                            <a href="<?php echo $button["button_url"]; ?>">
+                                <?php echo $button["button_text"]; ?>
+                            </a>
+                        </button>
+                    </div>
+                </div>
+            </main><!-- #main -->
+        </section><!-- #primary -->
+        <?php
+    endwhile;
+else:
+    // Do something...
+endif; ?>
+<?php
+// Check rows exists.
+if (have_rows("ameneties_section")):
+    // Loop through rows.
+    while (have_rows("ameneties_section")):
+        the_row();
+        // Load sub field value.
+        $title = get_sub_field("title");
+        $description = get_sub_field("description");
+        $background = get_sub_field("background");
+        $ameneties = get_sub_field("ameneties");
+        ?>
+        <section id="ameneties-section" class="lg:h-screen lg:max-h-[980px] bg-no-repeat bg-cover"
+            style="background-image: url('<?php echo $background; ?>">
+            <div class="container h-full">
+                <div class="p-4 py-6 md:p-10 lg:p-16 bg-[#3E9CBE] h-full max-w-[830px] w-full ml-auto mr-20">
+                    <h1 class=" text-4xl md:text-6xl lg:text-[67px] text-white leading-none mb-7">
+                        <?php echo $title; ?>
+                    </h1>
+                    <p class="text-[21px] md:text-[30px] font-extralight italic text-white leading-[1.2] mb-14">
+                        <?php echo $description; ?>
+                    </p>
+                    <?php
+                    if (ameneties) {
+                        ?>
+                        <div class="grid grid-cols-2 gap-3 md:gap-4  lg:gap-x-0  lg:gap-y-5">
+                            <?php
+                            foreach ($ameneties as $amenity) {
+                                ?>
+                                <div class="grid grid-cols-[auto_1fr] gap-3 md:gap-8 lg:gap-10 items-center">
+                                    <img class="icon" src="<?php echo $amenity["amenity_icon"]; ?> " alt="" srcset="">
+                                    <p class="text-white font-medium text-sm md:text-lg">
+                                        <?php echo $amenity["amenity_title"]; ?>
+                                    </p>
+                                </div>
+                                <?php
+                            }
+                            ?>
+                        </div>
+                        <?php
+                    }
+                    ?>
+                </div>
             </div>
-            <div class="grid gap-4 lg:justify-items-end content-baseline max-lg:order-1">
-                <h1 class="text-5xl md:text-6xl max-lg:text-center xl:text-7xl">Welcome to Supreme Hotel</h1>
-                <img class="img lg:hidden" src="<?php bloginfo('template_url'); ?>/assets/images/staff.jpg" alt="">
-                <p class=" text-[23px] md:text-[30px] xl:text-[35px]  ">"Welcome to Supreme, Durres' epitome of luxury.
-                    Your extraordinary stay begins
-                    now, where stunning views, elegant suites, and impeccable service await. Enjoy every moment of
-                    indulgence."</p>
-                <button class="button  gold text-white ml-auto">READ MORE</button>
+        </section><!-- #primary -->
+        <?php
+    endwhile;
+else:
+    // Do something...
+endif;
 
+if (get_field("has_slider")) {
+    get_template_part('template-parts/layout/section', 'rooms-slider');
+}
+if (have_rows("restaurant_section")):
+    // Loop through rows.
+    while (have_rows("restaurant_section")):
+        the_row();
+        // Load sub field value.
+        $title = get_sub_field("title");
+        $description = get_sub_field("description");
+        $background = get_sub_field("background");
+        $button = get_sub_field("button");
+        ?>
+        <section id="restaurant-section" class="h-screen max-h-[980px] relative">
+            <div class="absolute top-0 left-0 w-full h-full z-0 bg-no-repeat bg-cover bg-center"
+                style="background-image: url('<?php echo $background; ?>"></div>
+            <div class="absolute top-0 left-0 w-full h-full z-[1] bg-gradient-to-r from-black to-transparent opacity-90">
+            </div>
+            <div class="container h-full grid  lg:grid-cols-2 items-center relative z-[2] ">
+                <div class="">
+                    <h1 class=" text-[40px] md:text-[73px] text-white leading-none mb-10">
+                        <?php echo $title; ?>
+                    </h1>
+                    <p class="text-[20px] font-extralight italic text-white leading-snug md:leading-[2.2] mb-7">
+                        <?php echo $description; ?>
+                    </p>
+                    <button class="button gold  text-white mx-auto">
+                        <a href="<?php echo $button["button_url"]; ?>">
+                            <?php echo $button["button_text"]; ?>
+                        </a>
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <?php
+    endwhile;
+else:
+    // Do something...
+endif; ?>
+
+
+<?php
+$title = get_field("attractions_title");
+$attractions_list = get_field("attractions_list");
+if ($title && $attractions_list):
+    ?>
+    <section id="attractions-section" class="lg:min-h-screen bg-white py-10">
+        <div class="container">
+            <h1 class="text-black text-3xl my-7">
+                <?php echo $title ?>
+            </h1>
+            <div class="splide attractions-splide" role="group" aria-label="Rooms Slider">
+                <div class="splide__track">
+                    <?php
+                    if ($attractions_list) {
+                        ?>
+                        <ul class="splide__list">
+                            <?php
+                            foreach ($attractions_list as $slide) {
+                                ?>
+                                <li class="splide__slide">
+                                    <div class="relative">
+                                        <img class="mx-auto w-full" src="<?php echo $slide["attraction_image"]; ?>" alt="">
+                                    </div>
+                                    <h2 class="text-2xl font-semibold">
+                                        <?php echo $slide["attraction_title"]; ?>
+                                    </h2>
+                                    <p>
+                                        <?php echo $slide["description_text"] ?>
+                                    </p>
+                                </li>
+                                <?php
+                            } ?>
+                        </ul>
+
+                        <?php
+                    }
+                    ?>
+                </div>
             </div>
         </div>
 
+    </section>
 
-    </main><!-- #main -->
-</section><!-- #primary -->
 
-<section id="ameneties-section" class="lg:h-screen lg:max-h-[980px] bg-no-repeat bg-cover"
-    style="background-image: url('<?php bloginfo('template_url'); ?>/assets/images/beach-view.jpg');">
-    <div class="container h-full">
-        <div class="p-4 py-6 md:p-10 lg:p-16 bg-[#480634] h-full max-w-[830px] w-full ml-auto mr-20">
-            <h1 class=" text-4xl md:text-6xl lg:text-[67px] text-white leading-none mb-7">Our Amenities</h1>
-            <p class="text-[21px] md:text-[30px] font-extralight italic text-white leading-[1.2] mb-14">These amenities
-                at "Supreme"
-                aim to
-                create an unforgettable luxury experience for every guest.</p>
-            <div class="grid grid-cols-2 gap-3 md:gap-4  lg:gap-x-0  lg:gap-y-5">
-                <div class="grid grid-cols-[auto_1fr] gap-3 md:gap-8 lg:gap-10 items-center">
-                    <img class="icon" src="<?php bloginfo('template_url') ?>/assets/SVG/laders.svg" alt="" srcset="">
-                    <p class="text-white font-medium text-sm md:text-lg">Swimming Pool</p>
-                </div>
-                <div class="grid grid-cols-[auto_1fr] gap-3 md:gap-8 lg:gap-10 items-center">
-                    <img class="icon" src="<?php bloginfo('template_url') ?>/assets/SVG/swimmer.svg" alt="" srcset="">
-                    <p class="text-white font-medium text-sm md:text-lg">Surfing Lessons</p>
-                </div>
-                <div class="grid grid-cols-[auto_1fr] gap-3 md:gap-8 lg:gap-10 items-center">
-                    <img class="icon" src="<?php bloginfo('template_url') ?>/assets/SVG/Spa.svg" alt="" srcset="">
-                    <p class="text-white font-medium text-sm md:text-lg">Spa & Massage</p>
-                </div>
-                <div class="grid grid-cols-[auto_1fr] gap-3 md:gap-8 lg:gap-10 items-center">
-                    <img class="icon" src="<?php bloginfo('template_url') ?>/assets/SVG/beach.svg" alt="" srcset="">
-                    <p class="text-white font-medium text-sm md:text-lg">Private Beach</p>
+    <script>
+        new Splide('.attractions-splide', {
+            perPage: 3,
+            breakpoints: {
+                640: {
+                    perPage: 1
+                },
+                767: {
+                    gap: "60px",
 
-                </div>
-                <div class="grid grid-cols-[auto_1fr] gap-3 md:gap-8 lg:gap-10 items-center">
-                    <img class="icon" src="<?php bloginfo('template_url') ?>/assets/SVG/gym.svg" alt="" srcset="">
-                    <p class="text-white font-medium text-sm md:text-lg">Gym & Yoga</p>
-                </div>
-                <div class="grid grid-cols-[auto_1fr] gap-3 md:gap-8 lg:gap-10 items-center">
-                    <img class="icon" src="<?php bloginfo('template_url') ?>/assets/SVG/speaker.svg" alt="" srcset="">
-                    <p class="text-white font-medium text-sm md:text-lg">Conference Room</p>
-                </div>
+                },
+                1024: {
+                    gap: "100px",
 
-                <div class="grid grid-cols-[auto_1fr] gap-3 md:gap-8 lg:gap-10 items-center">
-                    <img class="icon" src="<?php bloginfo('template_url') ?>/assets/SVG/boat.svg" alt="" srcset="">
-                    <p class="text-white font-medium text-sm md:text-lg">Boat Tours</p>
-                </div>
-                <div class="grid grid-cols-[auto_1fr] gap-3 md:gap-8 lg:gap-10 items-center">
-                    <img class="icon" src="<?php bloginfo('template_url') ?>/assets/SVG/diving.svg" alt="" srcset="">
-                    <p class="text-white font-medium text-sm md:text-lg">Diving & Snorling</p>
-                </div>
-            </div>
-        </div>
-
-    </div>
-</section><!-- #primary -->
-
-<section id="rooms-section" class="lg:h-screen bg-white py-10">
-    <div class="container">
-        <h1 class="text-black text-3xl my-7">Our Rooms</h1>
-        <div class="splide rooms-splide" role="group" aria-label="Rooms Slider">
-            <div class="splide__track">
-                <ul class="splide__list">
-                    <li x-data="{open: false}" @mouseover="open = true" @mouseout="open = false" class="splide__slide">
-                        <div class="relative">
-                            <div x-show="open" x-transition class="py-2 px-4 bg-white absolute w-full  left-0 bottom-0">
-                                <p class="text-sm md:text-base">Max 2 guests</p>
-                            </div>
-                            <img src="<?php bloginfo('template_url'); ?>/assets/images/room1.jpg" alt="">
-                        </div>
-                        <a class="py-1 -mt-[2px] text-lg hover:underline"
-                            href="<?php echo esc_url(home_url('/')); ?>standard-double-room/">Standard Double
-                            Room</a>
-                    </li>
-                    <li x-data="{open: false}" @mouseover="open = true" @mouseout="open = false" class="splide__slide">
-                        <div class="relative">
-                            <div x-show="open" x-transition class="py-2 px-4 bg-white absolute w-full  left-0 bottom-0">
-                                <p class="text-sm md:text-base">Max 2 guests</p>
-                            </div>
-                            <img src="<?php bloginfo('template_url'); ?>/assets/images/room2.jpg" alt="">
-                        </div>
-                        <a class="py-1 -mt-[2px] text-lg hover:underline"
-                            href="<?php echo esc_url(home_url('/')); ?>standard-double-room/">Superior Double
-                            Room</a>
-                    </li>
-                    <li x-data="{open: false}" @mouseover="open = true" @mouseout="open = false" class="splide__slide">
-                        <div class="relative">
-                            <div x-show="open" x-transition class="py-2 px-4 bg-white absolute w-full  left-0 bottom-0">
-                                <p class="text-sm md:text-base">Max 2 guests</p>
-                            </div>
-                            <img src="<?php bloginfo('template_url'); ?>/assets/images/room3.jpg" alt="">
-                        </div>
-                        <a class="py-1 -mt-[2px] text-lg hover:underline"
-                            href="<?php echo esc_url(home_url('/')); ?>standard-double-room/">Standard Triple
-                            Room</a>
-                    </li>
-                    <li x-data="{open: false}" @mouseover="open = true" @mouseout="open = false" class="splide__slide">
-                        <div class="relative">
-                            <div x-show="open" @mouseout="open = false" x-transition
-                                class="py-2 px-4 bg-white absolute w-full  left-0 bottom-0">
-                                <p class="text-sm md:text-base">Max 2 guests</p>
-                            </div>
-                            <img src="<?php bloginfo('template_url'); ?>/assets/images/room1.jpg" alt="">
-                        </div>
-                        <a class="py-1 -mt-[2px] text-lg hover:underline"
-                            href="<?php echo esc_url(home_url('/')); ?>standard-double-room/">Superior Triple
-                            Room</a>
-                    </li>
-                    <li x-data="{open: false}" @mouseover="open = true" @mouseout="open = false" class="splide__slide">
-                        <div class="relative">
-                            <div x-show="open" x-transition class="py-2 px-4 bg-white absolute w-full  left-0 bottom-0">
-                                <p class="text-sm md:text-base">Max 2 guests</p>
-                            </div>
-                            <img src="<?php bloginfo('template_url'); ?>/assets/images/room2.jpg" alt="">
-                        </div>
-                        <a class="py-1 -mt-[2px] text-lg hover:underline"
-                            href="<?php echo esc_url(home_url('/')); ?>standard-double-room/">Family Room</a>
-                    </li>
-                    <li x-data="{open: false}" @mouseover="open = true" @mouseout="open = false" class="splide__slide">
-                        <div class="relative">
-                            <div x-show="open" x-transition class="py-2 px-4 bg-white absolute w-full  left-0 bottom-0">
-                                <p class="text-sm md:text-base">Max 2 guests</p>
-                            </div>
-                            <img src="<?php bloginfo('template_url'); ?>/assets/images/room3.jpg" alt="">
-                        </div>
-                        <a class="py-1 -mt-[2px] text-lg hover:underline"
-                            href="<?php echo esc_url(home_url('/')); ?>standard-double-room/">Deluxe Sea View Suite</a>
-                    </li>
-                </ul>
-            </div>
-        </div>
-    </div>
-
-</section>
-
-<script>
-    new Splide('.rooms-splide', {
-        perPage: 3,
-        breakpoints: {
-            640: {
-                perPage: 2,
+                },
             },
-            767: {
-                perPage: 2,
-            },
-        },
-        pagination: false,
-        gap: 20,
-        rewind: true
+            arrows: false,
+            pagination: true,
+            gap: "150px",
+            rewind: true
 
-    }).mount();
-</script>
-
-<section id="restaurant-section" class="h-screen max-h-[980px] relative">
-
-    <div class="absolute top-0 left-0 w-full h-full z-0 bg-no-repeat bg-cover bg-center"
-        style="background-image: url('<?php bloginfo('template_url'); ?>/assets/images/IMG4.jpg');"></div>
-    <div class="absolute top-0 left-0 w-full h-full z-[1] bg-gradient-to-r from-black to-transparent opacity-90">
-    </div>
-    <div class="container h-full grid  lg:grid-cols-2 items-center relative z-[2] ">
-        <div class="">
-            <h1 class=" text-[40px] md:text-[73px] text-white leading-none mb-10">Panorama Restaurant</h1>
-            <p class="text-[20px] font-extralight italic text-white leading-snug md:leading-[2.2] mb-7">"Supreme" Hotel
-                in
-                Durres,
-                Albania, is a realm of absolute luxury.From the awe-inspiring sea-view rooms to the
-                exquisite dining and
-                top-notch amenities like the infinity pool and spa,
-                every detail exudes opulence. The staff's impeccable service creates an unforgettable
-                experience.
-                If you crave the finest,"Supreme" is your ultimate escape</p>
-            <button class="button gold  text-white mx-auto">VIEW MENU</button>
-        </div>
-    </div>
-</section><!-- #primary-->
-
+        }).mount();
+    </script>
+    <?php
+    // Do something...
+endif; ?>
 
 <section id="reviews-section" class="lg:h-screen">
     <div class="container h-full grid lg:grid-cols-2 relative">
-        <div class="p-10 lg:p-16 bg-[#480634] h-full w-full grid content-center relative z-[2] ">
+        <div class="p-10 lg:p-16 bg-[#3E9CBE] h-full w-full grid content-center relative z-[2] ">
             <div class=" w-[135px] h-2.5 bg-[#C3B085] mb-3"></div>
-            <p class="text-base md:text-[20px] font-medium  text-white pl-8">AT THE HEART OF THE COMMUNITY</p>
+
             <h1 class="text-[48px] md:text-[55px] lg:text-[67px] text-white leading-none mt-2 mb-7">People Say</h1>
-            <p class="text-[20px] font-extralight italic text-white leading-[1.2] mb-14">"Supreme" Hotel in Durres,
+            <p class="text-[20px] font-extralight italic text-white leading-[1.2] mb-14">Supreme Hotel,
                 Albania, is a realm of absolute luxury. From the awe-inspiring sea-view rooms to the exquisite dining
                 and top-notch amenities like the infinity pool and spa, every detail exudes opulence. The staff's
                 impeccable service creates an unforgettable experience.
